@@ -12,8 +12,6 @@ from os import getenv
 # from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
 # from rank_llm.rerank.listwise.zephyr_reranker import ZephyrReranker
 
-CONNECTION_STRING = "postgresql+psycopg://user:password@localhost:5432/vector_db"
-
 CONNECTION_STRING = getenv("PG_CONNECTION_STRING", "")
 if not CONNECTION_STRING:
     raise ValueError("PG_CONNECTION_STRING environment variable is not set.")
