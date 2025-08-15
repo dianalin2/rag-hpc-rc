@@ -1,4 +1,9 @@
-# docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm
+# docker compose exec ollama ollama pull 
+# mistral:7b-instruct-q4_K_M
+# gemma3:4b-it-qat
+# docker compose exec ollama ollama pull nomic-embed-text:latest
+# ollama pull mistral:7b-instruct-q4_K_M
+
 services:
   ollama:
     image: ollama/ollama
@@ -9,7 +14,7 @@ services:
     ports:
       - "11434:11434"
   postgres:
-    image: pgvector/pgvector:0.8.0-pg17
+    image: pgvector/pgvector:pg17
     restart: unless-stopped
     environment:
       POSTGRES_USER: user

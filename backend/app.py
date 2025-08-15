@@ -1,8 +1,14 @@
 from flask import Flask
 from flask import request, jsonify
 from query import get_vector_store, get_retriever, rag_query, create_rag_chat
+from flask_cors import CORS
+
+
 
 app = Flask(__name__)
+
+# gives react permission
+CORS(app)
 
 @app.route('/create_chat', methods=['POST'])
 def create_chat():

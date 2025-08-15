@@ -117,7 +117,7 @@ def create_rag_chat() -> uuid.UUID:
     
     chat = ChatOllama(
         base_url=OLLAMA_BASE_URL,
-        model="qwen3",
+        model="mistral:7b-instruct-q4_K_M",
         temperature=0.1,  # Adjust temperature for more deterministic responses
         prompt=prompt,
     )
