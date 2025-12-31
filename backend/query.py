@@ -12,6 +12,16 @@ from os import getenv
 # from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
 # from rank_llm.rerank.listwise.zephyr_reranker import ZephyrReranker
 
+
+# ------- prompt guard (Lllama Guard 3) ----------
+
+from langchain_ollama import ChatOllama
+
+
+
+
+# -- connect to DB -- 
+
 CONNECTION_STRING = getenv("PG_CONNECTION_STRING", "")
 if not CONNECTION_STRING:
     raise ValueError("PG_CONNECTION_STRING environment variable is not set.")
@@ -117,7 +127,7 @@ def create_rag_chat() -> uuid.UUID:
     
     chat = ChatOllama(
         base_url=OLLAMA_BASE_URL,
-        model="gemma3",
+        model = os.getenv("LLM_MODEL", "gemma3") ,
         temperature=0.1,  # Adjust temperature for more deterministic responses
         prompt=prompt,
     )
@@ -137,83 +147,117 @@ def create_rag_chat() -> uuid.UUID:
     return chat_id
 
 def rag_query(chat_id: uuid.UUID, retriever: ParentDocumentRetriever, query: str) -> str:
-    """
-    Perform a RAG query on the PGVectorStore.
-    """
-    chat_instance = chat_instances[chat_id]
-    chat = chat_instance["chat"]
 
-    prompt = chat_instance["messages"]
+    print("\n----- NEW QUERY -----", flush=True)
+    print("User asked:", query, flush=True)
 
-    # retriever_multi_query = MultiQueryRetriever.from_llm(
-    #     retriever=vector_store.as_retriever(),
-    #     llm=chat,
-    # )
+    # -------------------------------
+    # SAFETY CHECK
+    # -------------------------------
 
-    # # Perform the retrieval
-    # docs = retriever_multi_query.invoke(query)
+    GUARD_PROMPT = f"""
+You are Llama Guard 3, a safety classifier.
+Respond ONLY with JSON in this format:
 
-    # retriever = create_history_aware_retriever(
-    #     llm=chat,
-    #     retriever=vector_store.as_retriever(),
-    #     prompt=ChatPromptTemplate.from_template(REPHRASE_PROMPT),
-    # )
+{{
+  "allowed": true/false,
+  "category": "safe" | "violence" | "self-harm" | "hate" | "sexual" | "crime" | "weapons" | "drugs" | "other",
+  "explanation": "<short explanation>"
+}}
 
-    # Perform the retrieval
-    # docs = retriever.invoke({
-    #     "input": query,
-    #     "chat_history": prompt,
-    # })
-    rephrased_query = chat.invoke(PromptTemplate.from_template(REPHRASE_PROMPT).format(
-        chat_history=prompt,
-        input=query
-    ), think=False)
-    print(f"Rephrased query: {rephrased_query.content}")
+Classify the following user message:
 
-    docs = retriever.invoke(rephrased_query.content, search_type="similarity")
-    print("Length of documents:", len(docs))
+"{query}"
+"""
 
-    # Take the top 50 documents
-    # docs = docs[:50]
-
-    context = "\n---\n".join([result.page_content for result in docs]) if docs else "No relevant documents found."
-    for doc in docs:
-        print(f"Document: {doc.metadata['source']}: with metadata {doc.metadata}")
-    
-    # print(context)
-
-    prompt.append(
-        {"role": "user", "content": ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(
-            context=context,
-            question=query
-        )}
+    guard_model = ChatOllama(
+        base_url=OLLAMA_BASE_URL,
+        model="llama-guard3",
+        temperature=0,
     )
 
-    # disable thinking 
-    response = chat.invoke(prompt, think=False)
+    guard_raw = guard_model.invoke(guard_prompt, think=False)
+    print("Llama Guard raw output:", guard_raw.content, flush=True)
 
+    try:
+        guard_result = json.loads(guard_raw.content)
+    except:
+        guard_result = {
+            "allowed": False,
+            "category": "error",
+            "explanation": "Could not parse Llama Guard output"
+        }
+
+    print("Safety Check Result:", guard_result, flush=True)
+
+    if not guard_result.get("allowed", False):
+        return {
+            "response": f"⚠️ {guard_result['explanation']}",
+            "sources": []
+        }
+
+
+    # load chat instance
+    chat_instance = chat_instances.get(chat_id)
+    if chat_instance is None:
+        return {"response": "Chat session expired. Refresh and try again.", "sources": []}
+
+    # -----------------------------------------------------------
+    # 2. Proceed with normal RAG pipeline
+    # -----------------------------------------------------------
+
+    chat = chat_instance["chat"]
+    messages = chat_instance["messages"]
+
+    # Rephrase w/ conversation history
+    rephrased = chat.invoke(
+        PromptTemplate.from_template(REPHRASE_PROMPT).format(
+            chat_history=messages,
+            input=query
+        ),
+        think=False
+    ).content
+
+    print(f"Rephrased Query: {rephrased}")
+
+    # Retrieve documents
+    docs = retriever.invoke(rephrased, search_type="similarity")
+    print(f"Documents retrieved: {len(docs)}")
+
+    context = "\n---\n".join([d.page_content for d in docs]) if docs else "No relevant documents found."
+
+    # Build final prompt for RAG answer
+    final_prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE).format(
+        context=context,
+        question=query
+    )
+
+    messages.append({"role": "user", "content": final_prompt})
+
+    # Run model (no "thinking")
+    response = chat.invoke(messages, think=False)
+
+    # --- Format sources ---
     sources = {doc.metadata["source"]: doc.metadata for doc in docs}
-
     sources_formatted = []
     for source, metadata in sources.items():
-        match metadata["source_type"]:
-            case "youtube":
-                sources_formatted.append(f'[{metadata["title"]}]({metadata["webpage_url"]}) by [{metadata["author"]}](https://www.youtube.com/channel/{metadata["channel_id"]})')
-            case "markdown":
-                sources_formatted.append(f'[{metadata["source"]}]({metadata["source"]})')
-            case "website":
-                sources_formatted.append(f'[{metadata["source"]}]({metadata["source"]})')
-    
+        if metadata["source_type"] == "youtube":
+            sources_formatted.append(
+                f'[{metadata["title"]}]({metadata["webpage_url"]})'
+            )
+        else:
+            sources_formatted.append(f'[{metadata["source"]}]({metadata["source"]})')
+
     formatted_response = {
         "response": response.content,
         "sources": sources_formatted
     }
 
-    prompt.append(
-        {"role": "assistant", "content": response.content}
-    )
+    # Append assistant message for chat history
+    messages.append({"role": "assistant", "content": response.content})
 
     return formatted_response
+
 
 def main():
     vector_store = get_vector_store()

@@ -1,0 +1,335 @@
+[
+  {
+    "query": "What is Rivanna?",
+    "response": "Rivanna is one of the University of Virginia’s High-Performance Computing (HPC) systems. After hardware upgrades and expansions in 2019, the Rivanna supercomputer currently has 603 nodes with over 20,476 compute cores. The Afton and Rivanna systems provide access to 55 nodes with NVIDIA general purpose GPU accelerators (RTX2080, RTX3090, A6000, V100, A40, A100, and H200), including an NVIDIA BasePOD. Both platforms share storage systems of over 8 Petabytes and a stack of pre-installed software p",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6266102921503083,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 569,
+    "latency": 33.42674779891968,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/faq/](https://rc.virginia.edu/userinfo/faq/)",
+      "[https://rc.virginia.edu/userinfo/hpc/](https://rc.virginia.edu/userinfo/hpc/)",
+      "[https://rc.virginia.edu/about/people/galitz/](https://rc.virginia.edu/about/people/galitz/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I submit a Slurm job?",
+    "response": "Based on the provided text, here’s how you submit a Slurm job:\n\nYou submit a Slurm job using the `sbatch` command.  Here’s the basic syntax:\n\n```\nsbatch <job_script_file>\n```\n\nWhere `<job_script_file>` is the name of the script you want to run. This script typically contains the commands you want to execute on the cluster.\n\n**Example:**\n\nIf your job script is named `my_job.sh`, you would submit it with:\n\n```\nsbatch my_job.sh\n```\n\nThe text also mentions that the job script can contain commands to",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6303565773608211,
+    "has_sources": true,
+    "num_sources": 2,
+    "uncertainty_phrases": 0,
+    "response_length": 583,
+    "latency": 50.14116382598877,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/slurm-from-cli/section1/](https://learning.rc.virginia.edu/notes/slurm-from-cli/section1/)",
+      "[https://rc.virginia.edu/userinfo/hpc/slurm/](https://rc.virginia.edu/userinfo/hpc/slurm/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I check GPU usage?",
+    "response": "You can check GPU usage using several methods:\n\n*   **seff:** This command provides utilization statistics for completed jobs, including CPU and GPU utilization.\n*   **sstat:** This command provides statistics for running jobs.\n*   **GPU Dashboard:** This tool can be used to monitor GPU usage.\n*   **jobstats:** This software can be used to gain more utilization statistics about completed jobs.\n\nAdditionally, you can use the `-o` or `--output` option in your Slurm script to redirect standard outp",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6068380361281547,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 593,
+    "latency": 50.72746992111206,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/fine-tuning/cpu-allocation-ft/](https://learning.rc.virginia.edu/notes/llms-hpc/fine-tuning/cpu-allocation-ft/)",
+      "[https://learning.rc.virginia.edu/notes/slurm-from-cli/section3/](https://learning.rc.virginia.edu/notes/slurm-from-cli/section3/)",
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/inference/cpu-allocation-inference/](https://learning.rc.virginia.edu/notes/llms-hpc/inference/cpu-allocation-inference/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What partitions are available on Rivanna?",
+    "response": "The following partitions are available on Rivanna:\n\n*   Standard Partition (no GPU): 9GB RAM per core\n*   Interactive Partition: 6GB RAM per core\n*   GPU Partition: You can specify how much RAM you want.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.5737163121074833,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 203,
+    "latency": 28.072754859924316,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/deep-learning-hpc/cpu_memory_cores/](https://learning.rc.virginia.edu/notes/deep-learning-hpc/cpu_memory_cores/)",
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/fine-tuning/cpu-allocation-ft/](https://learning.rc.virginia.edu/notes/llms-hpc/fine-tuning/cpu-allocation-ft/)",
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/inference/cpu-allocation-inference/](https://learning.rc.virginia.edu/notes/llms-hpc/inference/cpu-allocation-inference/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What is Open OnDemand?",
+    "response": "Open OnDemand is a graphical user interface that allows access to HPC via a web browser. Within the Open OnDemand environment users have access to a file explorer; interactive applications like JupyterLab, RStudio Server & FastX Web; a command line interface; and a job composer and job monitor to submit jobs to the Rivanna and Afton clusters.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6973974088260116,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 344,
+    "latency": 45.06847381591797,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/deep-learning-hpc/resource_allocation_tools/](https://learning.rc.virginia.edu/notes/deep-learning-hpc/resource_allocation_tools/)",
+      "[https://rc.virginia.edu/userinfo/hpc/ood/desktop/](https://rc.virginia.edu/userinfo/hpc/ood/desktop/)",
+      "[https://rc.virginia.edu/userinfo/hpc/login/](https://rc.virginia.edu/userinfo/hpc/login/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I install Python packages?",
+    "response": "Packages could be installed via pip or conda package managers. \n\n**Using conda:**\n\n*   `conda search package_name` (search for a package by name)\n*   `conda install package_name` (install a package)\n*   `conda update package_name --upgrade` (upgrade the package to the latest stable version)\n*   `conda list` (list all installed packages)\n\n**Using pip:**\n\n*   `pip search package_name` (search for a package by name)\n*   `pip install package_name` (install a package)\n*   `pip update package_name --u",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6474443249801825,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 840,
+    "latency": 64.79114890098572,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/ivy/ivy-windows-sw/data-analysis/anaconda/](https://rc.virginia.edu/userinfo/ivy/ivy-windows-sw/data-analysis/anaconda/)",
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/setup/ood/](https://learning.rc.virginia.edu/notes/llms-hpc/setup/ood/)",
+      "[https://learning.rc.virginia.edu/courses/python-introduction/setting_up_environment/](https://learning.rc.virginia.edu/courses/python-introduction/setting_up_environment/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I run Jupyter on Rivanna?",
+    "response": "To run Jupyter on Rivanna, you can use the OpenOnDemand (OOD) Interactive Apps. Here’s a breakdown of the process:\n\n1.  **Install Jupyter:**\n    *   First, you need to install Jupyter within a conda environment. Use the following commands:\n        *   `module load miniforge`\n        *   `conda create -n jupyter`\n        *   `source activate jupyter`\n        *   `mamba install jupyter -y`\n\n2.  **Access JupyterLab via OOD:**\n    *   Open a web browser and go to [https://ood.hpc.virginia.edu](https",
+    "perplexity": null,
+    "hallucination_score": 0.1,
+    "semantic_similarity": 0.7802284987421435,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 1414,
+    "latency": 74.62147831916809,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/howtos/rivanna/convert-jupyter-pdf/](https://rc.virginia.edu/userinfo/howtos/rivanna/convert-jupyter-pdf/)",
+      "[https://rc.virginia.edu/userinfo/hpc/software/pytorch/](https://rc.virginia.edu/userinfo/hpc/software/pytorch/)",
+      "[https://rc.virginia.edu/userinfo/howtos/rivanna/](https://rc.virginia.edu/userinfo/howtos/rivanna/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What storage options do I have?",
+    "response": "RC offers several low-cost storage options to researchers. Home directory storage provides up to 50G with daily and weekly snapshots of data. Eligible PIs can request 10TB of Research Standard storage at no charge. PIs also have the option to purchase additional leased storage. You can learn more about all storage options here: [https://www.rc.virginia.edu/userinfo/storage/](https://www.rc.virginia.edu/userinfo/storage/).",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6584202099668963,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 425,
+    "latency": 74.36745524406433,
+    "sources": [
+      "[https://rc.virginia.edu/2020/04/rc-acquires-new-accounting-management-software-for-rivanna/](https://rc.virginia.edu/2020/04/rc-acquires-new-accounting-management-software-for-rivanna/)",
+      "[https://rc.virginia.edu/service/bioinformatics/](https://rc.virginia.edu/service/bioinformatics/)",
+      "[https://rc.virginia.edu/2024/07/reinstatement-of-file-purging-of-personal-/scratch-files-on-afton-and-rivanna/](https://rc.virginia.edu/2024/07/reinstatement-of-file-purging-of-personal-/scratch-files-on-afton-and-rivanna/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I request a project allocation?",
+    "response": "According to the provided text, you can request a project allocation by submitting a support request on the Research Computing website: [https://rc.virginia.edu/form/support-request/](https://rc.virginia.edu/form/support-request/). You can also attend one of their office hour sessions, which meet virtually over Zoom on Tuesdays (3-5PM) and Thursdays (10AM-12PM) via Zoom. Links to the sessions can be found at the bottom of [this page](https://rc.virginia.edu/support/) on their website.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.5862827224841214,
+    "has_sources": true,
+    "num_sources": 2,
+    "uncertainty_phrases": 0,
+    "response_length": 489,
+    "latency": 59.036569118499756,
+    "sources": [
+      "[https://rc.virginia.edu/2024/07/reinstatement-of-file-purging-of-personal-/scratch-files-on-afton-and-rivanna/](https://rc.virginia.edu/2024/07/reinstatement-of-file-purging-of-personal-/scratch-files-on-afton-and-rivanna/)",
+      "[https://rc.virginia.edu/2024/10/transition-from-anaconda-to-miniforge-october-15-2024/](https://rc.virginia.edu/2024/10/transition-from-anaconda-to-miniforge-october-15-2024/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What GPUs are available?",
+    "response": "GPUs are available on both our standard cluster (Rivanna/Afton) and our high security systems (Ivy/Rio). Access to the GPUs on Rivanna/Afton is available at no cost to all researchers with an allocation. For those who have been provisioned on our high security systems, the GPUs are available at no additional cost.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6229645757600457,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 315,
+    "latency": 53.99075198173523,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/hpc/software/matlab/](https://rc.virginia.edu/userinfo/hpc/software/matlab/)",
+      "[https://learning.rc.virginia.edu/notes/matlab-parallel-programming/matlab-parallel-programming_6/](https://learning.rc.virginia.edu/notes/matlab-parallel-programming/matlab-parallel-programming_6/)",
+      "[https://rc.virginia.edu/service/dac/ai/](https://rc.virginia.edu/service/dac/ai/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What is the difference between CPU and GPU nodes?",
+    "response": "Here’s a breakdown of the differences between CPU and GPU nodes based on the provided context:\n\n**CPU Nodes:**\n\n*   **Core Count:** Have between 100-1 cores.\n*   **Throughput:** Low throughput.\n*   **Workload:** Designed for generic workloads – complex and serial processing.\n*   **Memory:** Up to 1.5 TB per node, up to 80 GB per device.\n\n**GPU Nodes:**\n\n*   **Core Count:** Have between 103-4 cores.\n*   **Throughput:** High throughput.\n*   **Workload:** Designed for specific, highly parallel work",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6907640782287212,
+    "has_sources": true,
+    "num_sources": 2,
+    "uncertainty_phrases": 0,
+    "response_length": 726,
+    "latency": 59.38106107711792,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/deep-learning-hpc/hardware_overview/](https://learning.rc.virginia.edu/notes/deep-learning-hpc/hardware_overview/)",
+      "[https://learning.rc.virginia.edu/notes/gpu-applications-rivanna/](https://learning.rc.virginia.edu/notes/gpu-applications-rivanna/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What is the policy on large jobs?",
+    "response": "According to the text, large jobs should be submitted to the GPU partition. The document emphasizes using the GPU partition for DeepLabCut jobs due to compatibility issues with the official Docker image on the UVA HPC system.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.6448782581654434,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 225,
+    "latency": 57.088903188705444,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/hpc/slurm/](https://rc.virginia.edu/userinfo/hpc/slurm/)",
+      "[https://learning.rc.virginia.edu/notes/slurm-from-cli/section4/](https://learning.rc.virginia.edu/notes/slurm-from-cli/section4/)",
+      "[https://rc.virginia.edu/userinfo/hpc/software/deeplabcut/](https://rc.virginia.edu/userinfo/hpc/software/deeplabcut/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What MPI versions exist on Rivanna?",
+    "response": "Based on the provided context, the MPI version available on Rivanna is the Intel MPI library. The documentation and examples utilize this library for parallel Julia computations.",
+    "perplexity": null,
+    "hallucination_score": 0.1,
+    "semantic_similarity": 0.79564867255611,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 178,
+    "latency": 49.542484283447266,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/hpc/software/mpi/](https://rc.virginia.edu/userinfo/hpc/software/mpi/)",
+      "[https://rc.virginia.edu/2019/09/important-notes-from-the-17-september-rivanna-maintenance/](https://rc.virginia.edu/2019/09/important-notes-from-the-17-september-rivanna-maintenance/)",
+      "[https://rc.virginia.edu/userinfo/hpc/software/julia/](https://rc.virginia.edu/userinfo/hpc/software/julia/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "Why does my job stay pending?",
+    "response": "Based on the provided text, your job might stay pending for several reasons:\n\n*   **Requesting too many cores, too much time, or too much memory:** The text emphasizes requesting only the necessary resources. Over-requesting can lead to your job being stuck in the queue.\n*   **Lack of insight into resource needs:** The text suggests performing a scaling study to determine the optimal number of cores/GPUs for your specific problem. Without this, you might be requesting more resources than needed.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.5207840149927186,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 681,
+    "latency": 103.5141658782959,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/hpc/software/julia/](https://rc.virginia.edu/userinfo/hpc/software/julia/)",
+      "[Features of Open OnDemand](https://www.youtube.com/watch?v=MpzThi43iak) by [UVA Research Computing](https://www.youtube.com/channel/UCDjikQvnYrZ3aNIdKgU54ag)",
+      "[https://learning.rc.virginia.edu/notes/matlab-parallel-programming/matlab-parallel-programming_7/](https://learning.rc.virginia.edu/notes/matlab-parallel-programming/matlab-parallel-programming_7/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I transfer files?",
+    "response": "According to the provided text, you can transfer files to and from the Rivanna and Afton HPC systems in several ways:\n\n*   **FileZilla:** This is a cross-platform data transfer tool that can be used via SFTP.\n*   **Directly via File Transfer Form:** You can upload files directly through the HPC system’s web interface.\n*   **Manual Transfer:** You can manually copy files to the HPC system’s working directory.\n\nThe text also provides specific instructions for downloading a Python executable from a",
+    "perplexity": null,
+    "hallucination_score": 0.1,
+    "semantic_similarity": 0.7679323139387315,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 557,
+    "latency": 71.95964097976685,
+    "sources": [
+      "[https://rc.virginia.edu/userinfo/hpc/](https://rc.virginia.edu/userinfo/hpc/)",
+      "[https://rc.virginia.edu/userinfo/hpc/logintools/filezilla/](https://rc.virginia.edu/userinfo/hpc/logintools/filezilla/)",
+      "[https://rc.virginia.edu/userinfo/howtos/rivanna/jupyter-to-python-script/](https://rc.virginia.edu/userinfo/howtos/rivanna/jupyter-to-python-script/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What is Slurm?",
+    "response": "According to the provided text, Slurm is “a resource manager for Linux clusters” that “manages the resources of the cluster and balances the demands of many competing job requests.” It’s used to decide which jobs run, when they run, and which node(s) they run on.",
+    "perplexity": null,
+    "hallucination_score": 0.1,
+    "semantic_similarity": 0.7285092886955663,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 263,
+    "latency": 43.36047625541687,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/deep-learning-hpc/dl_slurm_scripts/](https://learning.rc.virginia.edu/notes/deep-learning-hpc/dl_slurm_scripts/)",
+      "[https://learning.rc.virginia.edu/notes/slurm-from-cli/section1/](https://learning.rc.virginia.edu/notes/slurm-from-cli/section1/)",
+      "[https://learning.rc.virginia.edu/notes/llms-hpc/slurm-scripts/what-is-slurm/](https://learning.rc.virginia.edu/notes/llms-hpc/slurm-scripts/what-is-slurm/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "How do I use modules?",
+    "response": "According to the provided text, here’s how to use modules:\n\n1.  **`module load <module_name>`**:  You use the `module load` command followed by the name of the module you want to load. For example, `module load ansys`. This command prepares the environment by setting up the necessary variables and finding the libraries needed to run specific applications.\n\nAfter loading a module, you are ready to run the application(s) provided by the module.",
+    "perplexity": null,
+    "hallucination_score": 0.2,
+    "semantic_similarity": 0.562490870404359,
+    "has_sources": true,
+    "num_sources": 3,
+    "uncertainty_phrases": 0,
+    "response_length": 446,
+    "latency": 82.46924495697021,
+    "sources": [
+      "[https://learning.rc.virginia.edu/notes/slurm-from-cli/section2/](https://learning.rc.virginia.edu/notes/slurm-from-cli/section2/)",
+      "[https://learning.rc.virginia.edu/courses/parallel-computing-introduction/distributed_mpi_setup/](https://learning.rc.virginia.edu/courses/parallel-computing-introduction/distributed_mpi_setup/)",
+      "[https://rc.virginia.edu/userinfo/hpc/software/engineering/](https://rc.virginia.edu/userinfo/hpc/software/engineering/)"
+    ],
+    "model": "gemma3"
+  },
+  {
+    "query": "What tools are available for bioinformatics?",
+    "perplexity": null,
+    "hallucination": null,
+    "error": "HTTPConnectionPool(host='localhost', port=5050): Read timed out. (read timeout=120)",
+    "latency": 120.01420903205872,
+    "has_sources": false,
+    "response_length": 0,
+    "model": "gemma3"
+  },
+  {
+    "query": "What is AlphaFold?",
+    "perplexity": null,
+    "hallucination": null,
+    "error": "HTTPConnectionPool(host='localhost', port=5050): Read timed out. (read timeout=120)",
+    "latency": 120.00303220748901,
+    "has_sources": false,
+    "response_length": 0,
+    "model": "gemma3"
+  },
+  {
+    "query": "What versions of CUDA are available?",
+    "perplexity": null,
+    "hallucination": null,
+    "error": "HTTPConnectionPool(host='localhost', port=5050): Read timed out. (read timeout=120)",
+    "latency": 119.99860668182373,
+    "has_sources": false,
+    "response_length": 0,
+    "model": "gemma3"
+  }
+]

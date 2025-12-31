@@ -27,6 +27,7 @@ services:
     environment:
       PG_CONNECTION_STRING: "postgresql+psycopg://user:password@postgres:5432/vector_db"
       OLLAMA_BASE_URL: http://host.docker.internal:11434
+      LLM_MODEL: gemma3
     #depends_on:
       #- postgres
       #- ollama

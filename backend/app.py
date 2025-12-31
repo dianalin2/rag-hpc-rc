@@ -14,6 +14,7 @@ def query():
     data = request.get_json()
     query_text = data.get('query', '')
     chat_id = data.get('chat_id', None)
+    print("🔥 BACKEND RECEIVED QUERY:", query_text, flush=True)
 
     if not chat_id:
         return jsonify({"error": "Chat ID is required"}), 400

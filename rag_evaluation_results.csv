@@ -1,0 +1,1 @@
+model,query,perplexity,hallucination_score,semantic_similarity,has_sources,num_sources,uncertainty_phrases,response_length,latency,response_snippet

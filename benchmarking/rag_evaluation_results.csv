@@ -1,0 +1,57 @@
+model,query,perplexity,hallucination_score,semantic_similarity,has_sources,num_sources,uncertainty_phrases,response_length,latency,response_snippet
+gemma3,What is Rivanna?,N/A,0.200,0.627,True,3,0,569,33.43,"Rivanna is one of the University of Virginia’s High-Performance Computing (HPC) systems. After hardware upgrades and expansions in 2019, the Rivanna supercomputer currently has 603 nodes with over 20,"
+gemma3,How do I submit a Slurm job?,N/A,0.200,0.630,True,2,0,583,50.14,"Based on the provided text, here’s how you submit a Slurm job:
+
+You submit a Slurm job using the `sbatch` command.  Here’s the basic syntax:
+
+```
+sbatch <job_script_file>
+```
+
+Where `<job_script_file>"
+gemma3,How do I check GPU usage?,N/A,0.200,0.607,True,3,0,593,50.73,"You can check GPU usage using several methods:
+
+*   **seff:** This command provides utilization statistics for completed jobs, including CPU and GPU utilization.
+*   **sstat:** This command provides s"
+gemma3,What partitions are available on Rivanna?,N/A,0.200,0.574,True,3,0,203,28.07,"The following partitions are available on Rivanna:
+
+*   Standard Partition (no GPU): 9GB RAM per core
+*   Interactive Partition: 6GB RAM per core
+*   GPU Partition: You can specify how much RAM you wa"
+gemma3,What is Open OnDemand?,N/A,0.200,0.697,True,3,0,344,45.07,Open OnDemand is a graphical user interface that allows access to HPC via a web browser. Within the Open OnDemand environment users have access to a file explorer; interactive applications like Jupyte
+gemma3,How do I install Python packages?,N/A,0.200,0.647,True,3,0,840,64.79,"Packages could be installed via pip or conda package managers. 
+
+**Using conda:**
+
+*   `conda search package_name` (search for a package by name)
+*   `conda install package_name` (install a package)
+*"
+gemma3,How do I run Jupyter on Rivanna?,N/A,0.100,0.780,True,3,0,1414,74.62,"To run Jupyter on Rivanna, you can use the OpenOnDemand (OOD) Interactive Apps. Here’s a breakdown of the process:
+
+1.  **Install Jupyter:**
+    *   First, you need to install Jupyter within a conda e"
+gemma3,What storage options do I have?,N/A,0.200,0.658,True,3,0,425,74.37,RC offers several low-cost storage options to researchers. Home directory storage provides up to 50G with daily and weekly snapshots of data. Eligible PIs can request 10TB of Research Standard storage
+gemma3,How do I request a project allocation?,N/A,0.200,0.586,True,2,0,489,59.04,"According to the provided text, you can request a project allocation by submitting a support request on the Research Computing website: [https://rc.virginia.edu/form/support-request/](https://rc.virgi"
+gemma3,What GPUs are available?,N/A,0.200,0.623,True,3,0,315,53.99,GPUs are available on both our standard cluster (Rivanna/Afton) and our high security systems (Ivy/Rio). Access to the GPUs on Rivanna/Afton is available at no cost to all researchers with an allocati
+gemma3,What is the difference between CPU and GPU nodes?,N/A,0.200,0.691,True,2,0,726,59.38,"Here’s a breakdown of the differences between CPU and GPU nodes based on the provided context:
+
+**CPU Nodes:**
+
+*   **Core Count:** Have between 100-1 cores.
+*   **Throughput:** Low throughput.
+*   **"
+gemma3,What is the policy on large jobs?,N/A,0.200,0.645,True,3,0,225,57.09,"According to the text, large jobs should be submitted to the GPU partition. The document emphasizes using the GPU partition for DeepLabCut jobs due to compatibility issues with the official Docker ima"
+gemma3,What MPI versions exist on Rivanna?,N/A,0.100,0.796,True,3,0,178,49.54,"Based on the provided context, the MPI version available on Rivanna is the Intel MPI library. The documentation and examples utilize this library for parallel Julia computations."
+gemma3,Why does my job stay pending?,N/A,0.200,0.521,True,3,0,681,103.51,"Based on the provided text, your job might stay pending for several reasons:
+
+*   **Requesting too many cores, too much time, or too much memory:** The text emphasizes requesting only the necessary re"
+gemma3,How do I transfer files?,N/A,0.100,0.768,True,3,0,557,71.96,"According to the provided text, you can transfer files to and from the Rivanna and Afton HPC systems in several ways:
+
+*   **FileZilla:** This is a cross-platform data transfer tool that can be used v"
+gemma3,What is Slurm?,N/A,0.100,0.729,True,3,0,263,43.36,"According to the provided text, Slurm is “a resource manager for Linux clusters” that “manages the resources of the cluster and balances the demands of many competing job requests.” It’s used to decid"
+gemma3,How do I use modules?,N/A,0.200,0.562,True,3,0,446,82.47,"According to the provided text, here’s how to use modules:
+
+1.  **`module load <module_name>`**:  You use the `module load` command followed by the name of the module you want to load. For example, `m"
+gemma3,What tools are available for bioinformatics?,N/A,N/A,N/A,False,0,0,0,120.01,
+gemma3,What is AlphaFold?,N/A,N/A,N/A,False,0,0,0,120.00,
+gemma3,What versions of CUDA are available?,N/A,N/A,N/A,False,0,0,0,120.00,
